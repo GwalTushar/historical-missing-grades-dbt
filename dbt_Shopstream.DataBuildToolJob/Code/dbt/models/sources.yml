@@ -1,0 +1,42 @@
+version: 2
+
+sources:
+  - name: bronze
+    database: lakehouse_bronze
+    schema: dbo
+    tables:
+      - name: raw_customers
+      - name: raw_orders
+      - name: raw_payments
+
+models:
+  - name: stg_customers
+    columns:
+      - name: customer_id
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_orders
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        tests:
+          - not_null
+
+  - name: stg_payments
+    columns:
+      - name: payment_id
+        tests:
+          - not_null
+          - unique
+
+  - name: fct_customer_lifetime_value
+    columns:
+      - name: customer_id
+        tests:
+          - not_null
+          - unique

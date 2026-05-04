@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "nb_load_bronzze",
+    "description": "Provisioned by fabric2dbt from nb_load_bronzze"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "8de26065-f9d1-9b39-43a9-7c6e4932ab07"
+  }
+}
