@@ -2,11 +2,10 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
     "type": "Lakehouse",
-    "displayName": "lakehouse_silver",
-    "description": "Provisioned by fabric2dbt from lakehouse_silver"
+    "displayName": "lh_bronze"
   },
   "config": {
     "version": "2.0",
-    "logicalId": "9f318e43-ec29-b888-4c20-7de7b05e634f"
+    "logicalId": "fda50540-86cf-8c7f-4e10-e1b8e9a4e09d"
   }
 }
