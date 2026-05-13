@@ -1,0 +1,14 @@
+.venv/
+.venv-linux/
+.venv-airflow-linux/
+__pycache__/
+target/
+logs/
+.cache/
+.sm/
+.tmp/
+airflow/airflow.db
+airflow/run-logs/
+lineage/shopstream_sqlmesh/
+.user.yml
+*.pyc

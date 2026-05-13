@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: Cleaned customer data from bronze raw_customers.
+    columns:
+      - name: customer_id
+        tests:
+          - not_null
+          - unique
+      - name: email
+        tests:
+          - not_null
+
+  - name: stg_orders
+    description: Cleaned order data from bronze raw_orders.
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        tests:
+          - not_null
+
+  - name: stg_payments
+    description: Cleaned payment data from bronze raw_payments.
+    columns:
+      - name: payment_id
+        tests:
+          - not_null
+          - unique
+      - name: order_id
+        tests:
+          - not_null
+
+  - name: int_orders_with_payments
+    description: Intermediate model joining orders with payments.
+    columns:
+      - name: order_id
+        tests:
+          - not_null

@@ -1,0 +1,25 @@
+version: 2
+
+sources:
+  - name: silver_lakehouse
+    database: lakehouse_silver
+    schema: dbo
+    tables:
+      - name: stg_customers
+      - name: int_orders_with_payments
+
+models:
+  - name: fct_customer_lifetime_value
+    columns:
+      - name: customer_id
+        tests:
+          - not_null
+          - unique
+
+      - name: total_orders
+        tests:
+          - not_null
+
+      - name: lifetime_spend
+        tests:
+          - not_null

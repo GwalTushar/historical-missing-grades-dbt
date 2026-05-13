@@ -1,0 +1,26 @@
+version: 2
+
+sources:
+  - name: silver
+    description: Staging and intermediate models from Silver Lakehouse
+    database: lh_silver
+    schema: dbo
+
+    tables:
+      - name: stg_customers
+        description: Staged customer data
+        columns:
+          - name: customer_id
+          - name: first_name
+          - name: last_name
+          - name: email
+          - name: customer_created_at
+
+      - name: int_orders_with_payments
+        description: Orders with payment information
+        columns:
+          - name: order_id
+          - name: customer_id
+          - name: order_total
+          - name: amount_paid
+          - name: outstanding_balance

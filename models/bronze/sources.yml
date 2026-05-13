@@ -1,0 +1,34 @@
+version: 2
+
+sources:
+  - name: bronze
+    description: Raw source tables from Bronze Lakehouse
+    schema: dbo
+
+    tables:
+      - name: raw_customers
+        description: Raw customer data
+        columns:
+          - name: id
+          - name: first_name
+          - name: last_name
+          - name: email
+          - name: created_at
+
+      - name: raw_orders
+        description: Raw order transactions
+        columns:
+          - name: id
+          - name: customer_id
+          - name: total
+          - name: status
+          - name: created_at
+
+      - name: raw_payments
+        description: Raw payment records
+        columns:
+          - name: id
+          - name: order_id
+          - name: amount
+          - name: payment_method
+          - name: paid_at

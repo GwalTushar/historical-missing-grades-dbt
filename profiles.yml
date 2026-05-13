@@ -1,0 +1,54 @@
+shopstream_dbt_demo:
+  target: bronze_lakehouse
+
+  outputs:
+    bronze_lakehouse:
+      type: fabricspark
+      method: livy
+      authentication: CLI
+      endpoint: https://api.fabric.microsoft.com/v1
+      workspaceid: 5e907e7d-f419-45bf-97e9-d6d86b7d4173
+      lakehouseid: e9a4e09d-e1b8-4e10-8c7f-86cffda50540
+      lakehouse: lh_bronze
+      schema: dbo
+      spark_config:
+        name: shopstream_dbt_bronze
+        tags:
+          project: shopstream_dbt_demo
+          layer: bronze
+      connect_retries: 3
+      connect_timeout: 30
+      session_start_timeout: 1800
+      retry_all: true
+
+    silver_lakehouse:
+      type: fabricspark
+      method: livy
+      authentication: CLI
+      endpoint: https://api.fabric.microsoft.com/v1
+      workspaceid: 5e907e7d-f419-45bf-97e9-d6d86b7d4173
+      lakehouseid: 752a1754-16dc-4890-aeab-8660a0bccc90
+      lakehouse: lh_silver
+      schema: dbo
+      spark_config:
+        name: shopstream_dbt_silver
+        tags:
+          project: shopstream_dbt_demo
+          layer: silver
+      connect_retries: 3
+      connect_timeout: 30
+      session_start_timeout: 1800
+      poll_wait: 30
+      retry_all: true
+
+    gold_warehouse:
+      type: fabric
+      driver: "ODBC Driver 18 for SQL Server"
+      server: "j5rarvnxudju7firawyyzibhqq-pv7jaxqz6s7ulf7j23mgw7kbom.datawarehouse.fabric.microsoft.com"
+      port: 1433
+      database: wh_gold
+      schema: dbo
+      authentication: CLI
+      encrypt: true
+      trust_cert: false
+      threads: 4
